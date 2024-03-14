@@ -26,7 +26,11 @@ export class GameOver extends Scene {
       })
       .setOrigin(0.5)
       .setDepth(100);
-
+    this.gameOverText
+      .setInteractive()
+      .on(Phaser.Input.Events.POINTER_DOWN, () => {
+        this.scene.switch("MainMenu");
+      });
     EventBus.emit("current-scene-ready", this);
   }
 
