@@ -4,15 +4,19 @@ import { Preloader } from "./scenes/Preloader";
 import { MainMenu } from "./scenes/MainMenu";
 import { GameOver } from "./scenes/GameOver";
 import { Game as MainGame } from "./scenes/Game";
+import { UI } from "./scenes/UI";
+import { Plugin as NineSlicePlugin } from "phaser3-nineslice";
 
-//  Find out more information about the Game Config at:
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   width: 1280,
   height: 900,
   parent: "game-container",
   backgroundColor: "#fff",
-  scene: [Boot, Preloader, MainMenu, MainGame, GameOver],
+  plugins: {
+    global: [NineSlicePlugin.DefaultCfg],
+  },
+  scene: [Boot, Preloader, MainMenu, MainGame, UI, GameOver],
 };
 
 const StartGame = (parent: string) => {
