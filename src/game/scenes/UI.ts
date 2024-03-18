@@ -1,4 +1,5 @@
 import { GameObjects, Scene } from "phaser";
+import { EventBus } from "../EventBus";
 import ShopMenu from "../containers/ShopMenu";
 
 export class UI extends Scene {
@@ -64,20 +65,10 @@ export class UI extends Scene {
         this.shopMenu.hide();
         this.expandButton.visible = true;
       });
-  }
-
-  changeScene() {
-    if (this.expandTween) {
-      this.expandTween.stop();
-      this.expandTween = null;
-      this.expandButton.visible = false;
-    }
-    if (this.minimiseTween) {
-      this.minimiseTween.stop();
-      this.minimiseTween = null;
-      this.minimiseButton.visible = false;
-    }
-
-    this.scene.start("GameOver");
+    
+      
+      EventBus.on('stop-game', () => {
+        this.scene.stop();
+      })
   }
 }

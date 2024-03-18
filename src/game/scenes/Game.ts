@@ -27,11 +27,14 @@ export class Game extends Scene {
       this.rockLayer = map.createLayer("Rocks", tileset, 0, 0);
       this.rockLayer?.setDisplaySize(width, height);
     }
-    this.scene.launch("UI");
+    
     EventBus.emit("current-scene-ready", this);
+    
+    this.scene.launch("UI");
   }
 
   changeScene() {
+    EventBus.emit("stop-game", true)
     this.scene.start("GameOver");
   }
 }

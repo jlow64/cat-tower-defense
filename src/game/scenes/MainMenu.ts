@@ -11,14 +11,13 @@ export class MainMenu extends Scene {
   }
 
   create() {
-    // this.scene.restart();
     const { width, height } = this.scale;
     this.background = this.add
       .image(width / 2, height / 2, "titlescreen-bg")
       .setDepth(100);
 
     this.title = this.add
-      .text(width / 2, height / 3, "TOWER DEFENSE", {
+      .text(width / 2, height / 3, "CAT TOWER DEFENSE", {
         fontFamily: "Abel",
         fontSize: 100,
         color: "#ffffff",
